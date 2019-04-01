@@ -1,11 +1,13 @@
 #include <iostream>
 #include "Song.h"
+#include "UtPod.h"
 
 using namespace std;
 
 int main() {
 
-  /* // Testing the Song class
+  // Testing the Song Class
+  /*
   cout << "Testing the Song class" << endl;
   Song test;
   cout << "Testing default constructor, getter functions" << endl;
@@ -42,6 +44,42 @@ int main() {
   cout << "== " << (test2 == test3) << endl;
   cout << "> " << (test2 > test3) << endl;
   */
+
+  // Testing the UtPod Class
+  // Some songs to test stuff out
+  Song song0 = Song("Back to the Shack", "Weezer", 32);
+  Song song1 = Song("Bambi", "Hippo Campus", 32);
+  Song song2 = Song("7 Rings", "Ariana Grande", 32);
+  Song song3 = Song("Gimme Shelter", "Rolling Stones", 32);
+  Song song4 = Song("Back to the Shack", "Weezer", 32);
+  Song song5 = Song("Hey", "RHCP", 48);
+  Song song6 = Song("Ten Cent Pistol", "The Black Keys", 80);
+  Song song7 = Song("Back to the Shack", "Weezer", 32);
+  // test default constructor, showSongList, and addSong
+  UtPod pod1;
+  pod1.showSongList();
+  pod1.addSong(song0);
+  pod1.addSong(song1);
+  pod1.addSong(song2);
+  pod1.addSong(song3);
+  pod1.addSong(song2);
+  pod1.showSongList(); // since I add to the head of the LL, the print-out order should be songs 2 3 2 1 0
+  // test constructor with size parameter, getTotalMemory, get RemainingMemory, getNumSongs
+  cout << pod1.getRemainingMemory() << endl;
+  UtPod pod2 = UtPod(160);
+  cout << pod2.getRemainingMemory() << endl;
+  cout << pod2.getTotalMemory() << endl;
+  pod2.addSong(song6);
+  cout << pod2.getRemainingMemory() << endl;
+  cout << pod2.getTotalMemory() << endl;
+  cout << pod2.addSong(song6) << endl;
+  cout << pod2.addSong(song6) << endl;
+  pod1.showSongList();
+  cout << pod1.getNumSongs() << endl;
+  pod2.showSongList();
+  cout << pod2.getNumSongs() << endl;
+
+
 
   return 0;
 }
