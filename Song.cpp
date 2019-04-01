@@ -4,6 +4,7 @@
 
 using namespace std;
 
+  // defaults are title = "DEFAULT", artist = "DEFAULT", size = DEFAULT_SIZE constant in header file
   Song::Song()
   {
     title = "DEFAULT";
@@ -17,31 +18,10 @@ using namespace std;
     size = _size;
   }
 
-  string Song::getTitle() const {
-    return title;
-  }
+  // getter and setter functions defined in header file
 
-  void Song::setTitle(string newTitle) {
-    title = newTitle;
-  }
-
-  string Song::getArtist() const {
-    return artist;
-  }
-
-  void Song::setArtist(string newArtist) {
-    artist = newArtist;
-  }
-
-  int Song::getSize() const {
-    return size;
-  }
-
-  void Song::setSize(int newSize) {
-    size = newSize;
-  }
-
-  // artist, then title, then size
+  // overload comparison operators
+  // comparison based first on artist, then title, then size
   bool Song::operator >(Song const &rhs)
   {
     if (artist == rhs.artist) {
@@ -59,4 +39,18 @@ using namespace std;
   bool Song::operator ==(Song const &rhs)
   {
     return ((title == rhs.title) && ((artist == rhs.artist) && (size == rhs.size)));
+  }
+
+  bool Song::operator <(Song const &rhs)
+  {
+    if (artist == rhs.artist) {
+      if (title == rhs.title) {
+        if (size == rhs.size) {
+          return false;
+        }
+        else return (size < rhs.size);
+      }
+      else return (title < rhs.title);
+    }
+    else return (artist < rhs.artist);
   }

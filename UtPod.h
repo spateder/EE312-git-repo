@@ -123,8 +123,6 @@ public:
     return podMemSize;
   }
 
-
-
   /* FUNCTION - int getRemainingMemory
    *  returns the amount of memory available for adding new songs
 

@@ -4,7 +4,6 @@
 #define SONG_H
 
 #include <string>
-// #include <iostream>
 
 using namespace std;
 
@@ -32,10 +31,9 @@ public:
   // we don't need to write a destructor for the Song class because the default destructor is sufficient
   // the default destructor can handle ints, and strings have their own destructor that gets called
 
-  //TODO define toString() equivalent?
-
   bool operator >(Song const &rhs);
   bool operator ==(Song const &rhs);
+  bool operator <(Song const &rhs);
 
 };
 

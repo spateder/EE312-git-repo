@@ -1,7 +1,7 @@
 // Created by Saagar Pateder on 3/28/2019.
 
 #include "UtPod.h"
-//#include "Song.h"
+#include "Song.h"
 
 using namespace std;
 
@@ -9,8 +9,8 @@ using namespace std;
   //set the memory size to MAX_MEMORY
   UtPod::UtPod() {
     // TODO update to reflect the fact that we're adding a SongNode, not a Song
-    SongNode first;
-    first.s = NULL;
+//    SongNode first;
+//    first.s = NULL;
     podMemSize = MAX_MEMORY;
   }
 
@@ -36,12 +36,13 @@ using namespace std;
    output parms -
   */
   int addSong(Song const &s) {
-    if(this.getRemainingMemory() < s.getSize()) {
-      return -1;
-    }
-    else {
-
-    }
+//    if(this.getRemainingMemory() < s.getSize()) {
+//      return -1;
+//    }
+//    else {
+//
+//    }
+return 0;
   }
 
 
@@ -115,11 +116,7 @@ using namespace std;
      output parms -
   */
 
-  int getTotalMemory() {
-    return podMemSize;
-  }
-
-
+  // getTotalMemory() defined in UtPod.h
 
   /* FUNCTION - int getRemainingMemory
    *  returns the amount of memory available for adding new songs
@@ -132,7 +129,7 @@ using namespace std;
   int getRemainingMemory();
 
 
-  ~UtPod();
+  // ~UtPod();
   // TODO: a destructor that goes through each and every SongNode and deletes it
 
-};
+  // TODO define swap() to swap two songs in the list
