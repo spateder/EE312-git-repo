@@ -10,7 +10,7 @@ using namespace std;
 
   //Default constructor, sets the memory size to MAX_MEMORY
   UtPod::UtPod() {
-    songs = nullptr;
+    songs = NULL;
     podMemSize = MAX_MEMORY;
     unsigned int currentTime = (unsigned) time(0);
     srand(currentTime);
@@ -20,7 +20,7 @@ using namespace std;
   //The user of the class will pass in a size.
   //If the size is greater than MAX_MEMORY or less than or equal to 0, set the size to MAX_MEMORY.
   UtPod::UtPod(int size) {
-    songs = nullptr;
+    songs = NULL;
     if ((size > MAX_MEMORY) || (size <= 0)) {
       podMemSize = size;
     }
@@ -59,11 +59,11 @@ using namespace std;
   int UtPod::removeSong(Song const &s) {
     if(getNumSongs() == 0) {return NOT_FOUND;}
     SongNode* current = songs;
-    SongNode* prev = nullptr;
-    while (current != nullptr) {
+    SongNode* prev = NULL;
+    while (current != NULL) {
       if ((current->s) == s) { // now that we've found the song, remove it and return with a success
         // if we're removing the very first song in the list
-        if(prev == nullptr) {
+        if(prev == NULL) {
           songs = current->next;
           delete current;
           return SUCCESS;
@@ -105,7 +105,7 @@ using namespace std;
   void UtPod::showSongList(){
     cout << "Song List:" << endl;
     SongNode* current = songs;
-    while (current != nullptr) {
+    while (current != NULL) {
       cout << current->s.getTitle() << ", " << current->s.getArtist() << ", " << current->s.getSize() << endl;
       current = current -> next;
     }
@@ -127,7 +127,7 @@ using namespace std;
       int min_index = i;
       Song min_song = Song(current->s.getTitle(), current->s.getArtist(), current->s.getSize());
       for (int j = i; j < getNumSongs(); j++) {
-        if (test == nullptr) {;}
+        if (test == NULL) {;}
         else {
           if ((test->s) < min_song) {
             min_index = j;
@@ -167,7 +167,7 @@ using namespace std;
   int UtPod::getRemainingMemory() {
     int remainingMemory = podMemSize;
     SongNode* current = songs;
-    while (current != nullptr) {
+    while (current != NULL) {
       remainingMemory -= current -> s.getSize();
       current = current -> next;
     }
@@ -182,7 +182,7 @@ using namespace std;
   int UtPod::getNumSongs() {
     int songCount = 0;
     SongNode* current = songs;
-    while (current != nullptr) {
+    while (current != NULL) {
       songCount++;
       current = current -> next;
     }
