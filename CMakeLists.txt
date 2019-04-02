@@ -3,4 +3,4 @@ project(5_UTPod)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(5_UTPod main.cpp Song.cpp Song.h UtPod.cpp UtPod.h)
+add_executable(5_UTPod UtPodDriver.cpp Song.cpp Song.h UtPod.cpp UtPod.h)
