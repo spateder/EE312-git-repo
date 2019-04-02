@@ -54,3 +54,10 @@ using namespace std;
     }
     else return (artist < rhs.artist);
   }
+
+  Song& Song::operator =(Song const &rhs) {
+    title = rhs.title;
+    artist = rhs.artist;
+    size = rhs.size;
+    return *this;
+  }

@@ -119,9 +119,9 @@ public:
       e.g. inputs index1=1 and index2=3 should swap the first and third songs
      output parms - integer indicates successful swap or not
   */
-  int Swap(int index1, int index2);
+  int swap(int index1, int index2);
 
-  //~UtPod();
+//  ~UtPod();
 
 };
 
