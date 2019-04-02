@@ -1,6 +1,8 @@
 // Created by Saagar Pateder on 3/28/2019.
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "UtPod.h"
 #include "Song.h"
 
@@ -10,6 +12,8 @@ using namespace std;
   UtPod::UtPod() {
     songs = nullptr;
     podMemSize = MAX_MEMORY;
+    unsigned int currentTime = (unsigned) time(0);
+    srand(currentTime);
   }
 
   //Constructor with size parameter
@@ -21,6 +25,8 @@ using namespace std;
       podMemSize = size;
     }
     else {podMemSize = size;}
+    unsigned int currentTime = (unsigned) time(0);
+    srand(currentTime);
   }
 
   /* FUNCTION - int addSong
@@ -34,12 +40,12 @@ using namespace std;
   */
   int UtPod::addSong(Song const &s) {
     if(s.getSize() <= 0) {return -2;}
-    if(s.getSize() > getRemainingMemory()) {return -1;}
+    if(s.getSize() > getRemainingMemory()) {return NO_MEMORY;}
     SongNode* node = new SongNode;
     node->s = s;
     node->next = songs;
     songs = node;
-    return 0;
+    return SUCCESS;
   }
 
   /* FUNCTION - int removeSong
@@ -51,7 +57,7 @@ using namespace std;
      output parms - integer indicates successful add or not
   */
   int UtPod::removeSong(Song const &s) {
-    if(getNumSongs() == 0) {return -2;}
+    if(getNumSongs() == 0) {return NOT_FOUND;}
     SongNode* current = songs;
     SongNode* prev = nullptr;
     while (current != nullptr) {
@@ -60,22 +66,22 @@ using namespace std;
         if(prev == nullptr) {
           songs = current->next;
           delete current;
-          return 0;
+          return SUCCESS;
         }
         // if we're removing one of the other nodes in the list
         else{
           prev -> next = current->next;
           delete current;
-          return 0;
+          return SUCCESS;
         }
       }
       prev = current;
       current = current -> next;
     }
-    return -2; // since we didn't find the song, return -2.
+    return NOT_FOUND; // since we didn't find the song, return -2.
   }
 
-  /* TODO FUNCTION - void shuffle
+  /* FUNCTION - void shuffle
    *  shuffles the songs into random order
       o will do nothing if there are less than two songs in the current list
      input parms - none
@@ -83,8 +89,11 @@ using namespace std;
   */
   void UtPod::shuffle(){
     if (getNumSongs() == 1) {return;}
-    // handle shuffling, call swap()
-    return;
+
+    for(int i = 0; i < getNumSongs(); i++){
+      int index = i + (rand() % (getNumSongs() - i));
+      swap(i, index);
+    }
   }
 
   /* FUNCTION - void showSongList
@@ -225,11 +234,9 @@ using namespace std;
     current->s.setArtist(song2_artist);
     current->s.setSize(song2_size);
 
-    return 0;
+    return SUCCESS;
   }
 
-//  ~UtPod() {
-//    &this.clearMemory();
-//  }
-  // TODO: a destructor
-  // will involve calling clearMemory()
+  UtPod::~UtPod() {
+    clearMemory();
+  }

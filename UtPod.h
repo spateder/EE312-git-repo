@@ -24,6 +24,7 @@ private:
   SongNode *songs;  //the head pointer
 
   int podMemSize;  //the total amount of memory available on the UtPod
+  int id;
 
 public:
   //Default constructor
@@ -121,7 +122,7 @@ public:
   */
   int swap(int index1, int index2);
 
-//  ~UtPod();
+  ~UtPod();
 
 };
 

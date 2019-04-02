@@ -7,7 +7,6 @@ using namespace std;
 int main() {
 
   // Testing the Song Class
-  /*
   cout << "Testing the Song class" << endl;
   Song test;
   cout << "Testing default constructor, getter functions" << endl;
@@ -43,7 +42,6 @@ int main() {
   cout << "< " << (test2 < test3) << endl;
   cout << "== " << (test2 == test3) << endl;
   cout << "> " << (test2 > test3) << endl;
-  */
 
   // Testing the UtPod Class
   // Some songs to test stuff out
@@ -117,6 +115,27 @@ int main() {
   pod1.sortSongList();
   pod1.showSongList();
 
+  // Testing shuffle and sort
+  pod1.shuffle();
+  pod1.showSongList();
+  pod1.sortSongList();
+  pod1.showSongList();
+  cout << "----------------------------" << endl;
+  pod1.shuffle();
+  pod1.showSongList();
+  pod1.sortSongList();
+  pod1.showSongList();
+  cout << "----------------------------" << endl;
+  pod1.shuffle();
+  pod1.showSongList();
+  pod1.sortSongList();
+  pod1.showSongList();
+  cout << "----------------------------" << endl;
+  pod1.shuffle();
+  pod1.showSongList();
+  pod1.sortSongList();
+  pod1.showSongList();
+
   // test clearMemory
   pod1.clearMemory();
   pod1.showSongList();
@@ -126,7 +145,3 @@ int main() {
 
   return 0;
 }
-
-// TODO create driver that tests all of the functions in UtPod
-
-// TODO Questions to ask:
